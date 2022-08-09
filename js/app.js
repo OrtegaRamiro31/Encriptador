@@ -12,12 +12,23 @@ let elementosVacios = document.querySelector(".texto-vacio");
 let textoEncriptado = "";
 let textoDesencriptado = "";
 
+/* Por ca click en el body buscamos un elemento con la clase texto-obtenido */
+/* Fue colocado para hacer uso del párrafo encriptado/desencriptado y agregarle
+ ** también la función de copiar. Esto para poder copiar ya sea desde el botón
+ ** con dicha función o clickeando simplemente el párrafo.
+ */
+document.querySelector("body").addEventListener("click", function (e) {
+  if (e.target.classList == "texto-obtenido") {
+    copiarTexto();
+  }
+});
 /* Eventos para botones de encriptar y desencriptar */
 btnEncriptar.addEventListener("click", encriptar);
 btnDesencriptar.addEventListener("click", desencriptar);
 btnCopiar.addEventListener("click", copiarTexto);
 
 btnCopiar.style.visibility = "hidden";
+
 /*************************** Función de desencriptación ***************************/
 function desencriptar() {
   /* Reseteamos el boton de copiar con la palabra Copiar */
@@ -98,8 +109,15 @@ function encriptarLetra(letra) {
 
 /* Función para copiar el texto del section de resultado de encriptación/desencriptación */
 function copiarTexto() {
+  /* Seleccionamos del DOM el texto obtenido */
   const text = document.querySelector(".texto-obtenido").innerHTML;
+
+  /* Copiamos el texto al portapapeles */
   navigator.clipboard.writeText(text);
+
+  /* Cambiamos el texto del botón de "Copiar" a "Copiado" */
   btnCopiar.innerHTML = "Copiado";
+
+  /* Regresamos el texto del botón a "Copiar" después de 3 segundos */
   setTimeout(() => (btnCopiar.innerHTML = "Copiar"), 3000);
 }
