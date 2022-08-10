@@ -26,9 +26,13 @@ body {
     rgb(128, 208, 199) 100%
   );
   background-repeat: no-repeat;
-  height: 100vh;
+  height: auto;
 }
-
+@media (min-width: 1024px) {
+  body {
+    height: 100vh;
+  }
+}
 .logo {
   margin: 2rem 0 0 2rem;
 }
