@@ -75,11 +75,16 @@ body {
   font-family: "Inter", sans-serif;
   font-size: 3.2rem;
   line-height: 150%;
-  background-color: var(--azulClaro);
   width: 90%;
   resize: none;
   text-transform: lowercase;
   background-color: transparent;
+  height: 27rem;
+}
+@media (min-width: 768px) {
+  .entrada .entrada-texto {
+    height: auto;
+  }
 }
 .entrada .interaccion .botones {
   display: flex;
